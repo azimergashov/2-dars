@@ -1,25 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+
+import Todo from'./components/todo/Todo';
+import {useState} from "react"
+import Input from './components/input/Input'
+import List from './components/list/List';
+
 
 function App() {
+
+  const [todos, setTodos] = useState([ 1, "nmadur"])
+
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="App container">
+      <ul className='mt-5'>
+        <Input array = {todos}  />
+
+        <List>
+          {
+            todos.map( el => (
+              <Todo heading = {el} />
+            ))
+          }
+        </List>
+      </ul>
+
     </div>
+
   );
+
+
+
 }
 
 export default App;
